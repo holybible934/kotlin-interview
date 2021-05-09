@@ -28,10 +28,8 @@ class MainRecyclerViewAdapter:
             with(view) {
                 val name = view.findViewById<TextView>(R.id.name)
                 name.text = item?.name ?: "No Name"
-
             }
         }
-
     }
 
     override fun onBindViewHolder(holder: MovementViewHolder, position: Int) {
