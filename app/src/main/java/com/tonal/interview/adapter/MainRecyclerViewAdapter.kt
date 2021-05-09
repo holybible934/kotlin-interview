@@ -9,7 +9,6 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.squareup.picasso.Picasso
 import com.tonal.interview.R
 import com.tonal.interview.data.Movement
 
@@ -31,8 +30,7 @@ class MainRecyclerViewAdapter:
             val name = view.findViewById<TextView>(R.id.name)
             val thumbnail = view.findViewById<ImageView>(R.id.thumbnail)
             name.text = item?.name ?: "No Name"
-//            Picasso.get().load(item?.thumbnailMediaUrl).into(thumbnail)
-            Glide.with(view).load(item!!.thumbnailMediaUrl).into(thumbnail)
+            Glide.with(view).load(item!!.thumbnailMediaUrl).centerCrop().into(thumbnail);
         }
     }
 
