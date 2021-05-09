@@ -3,10 +3,12 @@ package com.tonal.interview.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.squareup.picasso.Picasso
 import com.tonal.interview.R
 import com.tonal.interview.data.Movement
 
@@ -27,7 +29,9 @@ class MainRecyclerViewAdapter:
         fun bind(item: Movement?) {
             with(view) {
                 val name = view.findViewById<TextView>(R.id.name)
+                val thumbnail = view.findViewById<ImageView>(R.id.thumbnail)
                 name.text = item?.name ?: "No Name"
+                Picasso.get().load(item?.thumbnailMediaUrl).into(thumbnail)
             }
         }
     }
