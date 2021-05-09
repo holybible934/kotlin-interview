@@ -1,10 +1,10 @@
 package com.tonal.interview
 
 import android.content.ContentValues.TAG
-import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
 import com.tonal.interview.adapter.MainRecyclerViewAdapter
 import com.tonal.interview.viewmodel.MainActivityViewModel
 
@@ -17,9 +17,10 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.main_activity)
 
         mainViewModel = MainActivityViewModel(DependencyInjection.movementRepository)
+        mainViewModel.loadMovementList()
         mainAdapter = MainRecyclerViewAdapter()
-        val list = mainViewModel.movementList.value
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N)
-            list?.stream()!!.forEach { element -> Log.d(TAG, "onCreate: " + element.id) }
+        mainViewModel.movementList.observe(this, {
+            it.forEach { movement -> Log.w(TAG, "Test:" + movement.id) }
+        })
     }
 }
