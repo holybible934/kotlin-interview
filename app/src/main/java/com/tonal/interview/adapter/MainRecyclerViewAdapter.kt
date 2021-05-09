@@ -3,6 +3,7 @@ package com.tonal.interview.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -25,7 +26,8 @@ class MainRecyclerViewAdapter:
     inner class MovementViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
         fun bind(item: Movement?) {
             with(view) {
-                name.text = item?.name ?: ""
+                val name = view.findViewById<TextView>(R.id.name)
+                name.text = item?.name ?: "No Name"
 
             }
         }
