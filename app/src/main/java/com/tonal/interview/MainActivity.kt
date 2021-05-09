@@ -4,7 +4,8 @@ import android.content.ContentValues.TAG
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.tonal.interview.adapter.MainRecyclerViewAdapter
 import com.tonal.interview.viewmodel.MainActivityViewModel
 
@@ -20,7 +21,11 @@ class MainActivity : AppCompatActivity() {
         mainViewModel.loadMovementList()
         mainAdapter = MainRecyclerViewAdapter()
         mainViewModel.movementList.observe(this, {
-            it.forEach { movement -> Log.w(TAG, "Test:" + movement.id) }
+//            it.forEach { movement -> Log.w(TAG, "Test:" + movement.id) }
+            mainAdapter.submitList(it)
         })
+        val recyclerView = findViewById<RecyclerView>(R.id.movements)
+        recyclerView.layoutManager = LinearLayoutManager(this)
+        recyclerView.adapter = mainAdapter
     }
 }
