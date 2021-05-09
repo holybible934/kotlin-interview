@@ -21,7 +21,7 @@ class MainActivity : AppCompatActivity() {
         mainViewModel.loadMovementList()
         mainAdapter = MainRecyclerViewAdapter()
         mainViewModel.movementList.observe(this, {
-//            it.forEach { movement -> Log.w(TAG, "Test:" + movement.id) }
+//            Log.d(TAG, "onCreate: List Size is " + it.size)
             mainAdapter.submitList(it)
         })
         val recyclerView = findViewById<RecyclerView>(R.id.movements)
