@@ -35,7 +35,7 @@ class MainActivity : AppCompatActivity() {
                     mainAdapter.submitList(mainViewModel.movementList.value)
                 } else {
                     mainAdapter.submitList(mainViewModel.movementList.value!!
-                        .filter { it.name.contains("$p0") }.toList())
+                        .filter { it.name.contains("$p0", true) }.toList())
                 }
                 return false
             }
